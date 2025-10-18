@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sierlijke Voeten - Medische Pedicure in [Plaats]</title>
+    <title>Sierlijke Voeten - Medische Pedicure in Delfzijl</title>
     <style>
         * {
             margin: 0;
@@ -144,6 +144,34 @@
             font-family: 'Palatino', serif;
         }
 
+        .visual-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .visual-card {
+            background-color: var(--licht-beige);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .visual-card img {
+            width: 100%;
+            max-width: 350px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
         .diensten-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -169,6 +197,13 @@
             color: var(--bosgroen);
             margin-bottom: 1rem;
             font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dienst-card .emoji {
+            font-size: 1.8rem;
         }
 
         .dienst-card p {
@@ -299,6 +334,24 @@
     </section>
 
     <div class="container">
+        <section class="section">
+            <h2>Professionele Voetverzorging</h2>
+            <div class="visual-section">
+                <div class="visual-card">
+                    <img src="diensten-overzicht.png" alt="Overzicht van diensten">
+                    <p style="color: var(--bruin); line-height: 1.8;">Alle behandelingen voor gezonde en verzorgde voeten</p>
+                </div>
+                <div class="visual-card">
+                    <img src="medische-pedicure.png" alt="Medische pedicure">
+                    <p style="color: var(--bruin); line-height: 1.8;">Vakkundige medische voetverzorging met aandacht voor detail</p>
+                </div>
+                <div class="visual-card">
+                    <img src="professional-care.png" alt="Professional foot care">
+                    <p style="color: var(--bruin); line-height: 1.8;">Gecertificeerde zorg in een ontspannen omgeving</p>
+                </div>
+            </div>
+        </section>
+
         <section id="diensten" class="section">
             <h2>Mijn Diensten</h2>
             <p style="text-align: center; color: var(--bruin); max-width: 800px; margin: 0 auto 2rem;">
@@ -307,32 +360,32 @@
             
             <div class="diensten-grid">
                 <div class="dienst-card">
-                    <h3>Medische Pedicure</h3>
+                    <h3><span class="emoji">✂️</span> Medische Pedicure</h3>
                     <p>Professionele voetverzorging waarbij nagelriemen verzorgd worden, nagels worden geknipt en gevijld, en de voeten grondig worden gereinigd. Ideaal voor het behouden van gezonde zachte voeten.</p>
                 </div>
 
                 <div class="dienst-card">
-                    <h3>Likdoorn Behandeling</h3>
+                    <h3><span class="emoji">🔍</span> Likdoorn Behandeling</h3>
                     <p>Vakkundige verwijdering van pijnlijke likdoorns met professionele instrumenten. Verlichting van drukpunten en advies over preventie voor langdurig comfort.</p>
                 </div>
 
                 <div class="dienst-card">
-                    <h3>Eeltverwijdering</h3>
+                    <h3><span class="emoji">✨</span> Eeltverwijdering</h3>
                     <p>Zorgvuldige verwijdering van hardnekkig eelt voor zachte en soepele voeten. Behandeling wordt afgestemd op uw specifieke situatie voor optimaal resultaat.</p>
                 </div>
 
                 <div class="dienst-card">
-                    <h3>Voetreflex Massage</h3>
+                    <h3><span class="emoji">💆</span> Voetreflex Massage</h3>
                     <p>Ontspannende voetreflexologie massage die niet alleen de voeten verzorgt, maar ook bijdraagt aan algeheel welzijn en ontspanning van lichaam en geest.</p>
                 </div>
 
                 <div class="dienst-card">
-                    <h3>Nagelproblematiek</h3>
+                    <h3><span class="emoji">💅</span> Nagelproblematiek</h3>
                     <p>Behandeling van ingegroeide nagels, dikke nagels, kalk nagels en andere nagelklachten met deskundige zorg en advies voor thuisverzorging.</p>
                 </div>
 
                 <div class="dienst-card">
-                    <h3>Advies & Nazorg</h3>
+                    <h3><span class="emoji">💡</span> Advies & Nazorg</h3>
                     <p>Persoonlijk advies over voetgezondheid, schoeisel en thuisverzorging. Preventieve tips om uw voeten gezond te houden.</p>
                 </div>
             </div>
@@ -342,20 +395,20 @@
             <h2>Waarom Sierlijke Voeten?</h2>
             <div class="voordelen">
                 <div class="voordeel">
-                    <h3>Jarenlange Ervaring</h3>
+                    <h3>⭐ Jarenlange Ervaring</h3>
                     <p>Arifa heeft uitgebreide ervaring in medische voetverzorging</p>
                 </div>
                 <div class="voordeel">
-                    <h3>Persoonlijke Aandacht</h3>
+                    <h3>🤝 Persoonlijke Aandacht</h3>
                     <p>Één-op-één behandeling in een rustige, ontspannen omgeving</p>
                 </div>
                 <div class="voordeel">
-                    <h3>Vakkundig & Hygiënisch</h3>
+                    <h3>🧼 Vakkundig & Hygiënisch</h3>
                     <p>Professionele werkwijze met oog voor detail en hygiëne</p>
                 </div>
-				<div class="voordeel">
-                    <h3>Gezellig</h3>
-                    <p>Een praatje of gewoon even rusten, het mag allebij</p>
+                <div class="voordeel">
+                    <h3>☕ Gezellig</h3>
+                    <p>Een praatje of gewoon even rusten, het mag allebei</p>
                 </div>
             </div>
         </section>
@@ -378,9 +431,9 @@
                     <p style="color: var(--bruin); line-height: 1.8;">
                         Of u nu komt voor een reguliere behandeling, last heeft van likdoorns of eelt, 
                         of gewoon wilt genieten van een ontspannende voetmassage - u bent van harte welkom!
-						
-						Momenteel verhuisd naar de Jachtlaan 12, in de G&W (Gezondheidswinkel). Alles bevindt zich op de begane grond, dus het is zeer toegankelijk!
-						Voorheen moesten we eerst de trap op, dus dit is een mooie vooruitgang.
+                    </p>
+                    <p style="color: var(--bruin); line-height: 1.8; margin-top: 1.5rem; font-weight: bold;">
+                        📍 Momenteel verhuisd naar de Jachtlaan 12, in de G&W (Gezondheidswinkel). Alles bevindt zich op de begane grond, dus het is zeer toegankelijk! Voorheen moesten we eerst de trap op, dus dit is een mooie vooruitgang.
                     </p>
                 </div>
             </div>
@@ -396,7 +449,7 @@
                 </div>
                 <div class="contact-item">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                    <span> +31 (0)6 25 28 16 52</span>
+                    <span>+31 (0)6 25 28 16 52</span>
                 </div>
                 <div class="contact-item">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
@@ -418,7 +471,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2025 Sierlijke Voeten - Medische Pedicure | KvK: </p>
+        <p>&copy; 2025 Sierlijke Voeten - Medische Pedicure | KvK: [nummer]</p>
         <p style="margin-top: 0.5rem; font-size: 0.9rem;">Uw voeten in vertrouwde handen</p>
     </footer>
 
