@@ -51,27 +51,33 @@
             font-size: 1.5rem;
             font-weight: bold;
             font-family: 'Palatino', serif;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
         }
 
-        .menu-toggle {
-            display: none;
-            background: transparent;
-            border: none;
-            color: var(--wit);
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0.5rem;
-            transition: transform 0.3s;
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--wit);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
         }
 
-        .menu-toggle.active {
-            transform: rotate(180deg);
+        .logo-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: var(--bosgroen);
         }
 
         nav ul {
             display: flex;
             list-style: none;
             gap: 2rem;
+            flex-wrap: wrap;
         }
 
         nav a {
@@ -251,118 +257,21 @@
             margin-bottom: 0.5rem;
         }
 
-        body.dark-theme {
-            --bosgroen: #a8c5a6;
-            --licht-groen: #7fa17d;
-            --beige: #d4c5b0;
-            --licht-beige: #2a2a2a;
-            --bruin: #d4c5b0;
-            --wit: #1a1a1a;
-            background-color: #1a1a1a;
-            color: #e0e0e0;
-        }
-
-        body.dark-theme header {
-            background: linear-gradient(135deg, #2a2a2a 0%, #3a3a3a 100%);
-        }
-
-        body.dark-theme .hero {
-            background: linear-gradient(rgba(20, 20, 20, 0.8), rgba(20, 20, 20, 0.8)),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%233a3a3a" width="1200" height="600"/><path d="M0 400 Q300 350 600 400 T1200 400 L1200 600 L0 600 Z" fill="%232a2a2a"/><circle cx="200" cy="150" r="80" fill="%23505050" opacity="0.3"/><circle cx="800" cy="200" r="100" fill="%23505050" opacity="0.2"/></svg>');
-        }
-
-        body.dark-theme .section h2 {
-            color: #a8c5a6;
-        }
-
-        body.dark-theme .dienst-card {
-            background-color: #2a2a2a;
-            border-color: #3a3a3a;
-        }
-
-        body.dark-theme .dienst-card h3 {
-            color: #a8c5a6;
-        }
-
-        body.dark-theme .over-mij {
-            background-color: #2a2a2a;
-        }
-
-        body.dark-theme .contact-info {
-            background: linear-gradient(135deg, #2a2a2a 0%, #3a3a3a 100%);
-        }
-
-        body.dark-theme footer {
-            background-color: #2a2a2a;
-        }
-
-        body.dark-theme {
-            --bosgroen: #a8c5a6;
-            --licht-groen: #7fa17d;
-            --beige: #d4c5b0;
-            --licht-beige: #2a2a2a;
-            --bruin: #d4c5b0;
-            --wit: #1a1a1a;
-            background-color: #1a1a1a;
-            color: #e0e0e0;
-        }
-
-        body.dark-theme header {
-            background: linear-gradient(135deg, #2a2a2a 0%, #3a3a3a 100%);
-        }
-
-        body.dark-theme .hero {
-            background: linear-gradient(rgba(20, 20, 20, 0.8), rgba(20, 20, 20, 0.8)),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%233a3a3a" width="1200" height="600"/><path d="M0 400 Q300 350 600 400 T1200 400 L1200 600 L0 600 Z" fill="%232a2a2a"/><circle cx="200" cy="150" r="80" fill="%23505050" opacity="0.3"/><circle cx="800" cy="200" r="100" fill="%23505050" opacity="0.2"/></svg>');
-        }
-
-        body.dark-theme .section h2 {
-            color: #a8c5a6;
-        }
-
-        body.dark-theme .dienst-card {
-            background-color: #2a2a2a;
-            border-color: #3a3a3a;
-        }
-
-        body.dark-theme .dienst-card h3 {
-            color: #a8c5a6;
-        }
-
-        body.dark-theme .over-mij {
-            background-color: #2a2a2a;
-        }
-
-        body.dark-theme .contact-info {
-            background: linear-gradient(135deg, #2a2a2a 0%, #3a3a3a 100%);
-        }
-
-        body.dark-theme footer {
-            background-color: #2a2a2a;
-        }
-
         @media (max-width: 768px) {
-            .hamburger {
-                display: block;
-            }
-
-            nav ul {
-                position: fixed;
-                top: 73px;
-                right: -100%;
-                width: 250px;
-                height: calc(100vh - 73px);
-                background: var(--bosgroen);
+            nav {
                 flex-direction: column;
-                padding: 2rem;
-                gap: 1.5rem;
-                transition: right 0.3s ease;
-                box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+                gap: 1rem;
                 align-items: flex-start;
             }
 
-            nav ul.active {
-                right: 0;
+            nav ul {
+                width: 100%;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero {
+                padding: 180px 2rem 100px;
             }
 
             .hero h1 {
@@ -374,9 +283,21 @@
 <body>
     <header>
         <nav>
-            <div class="logo">Sierlijke Voeten</div>
-            <button class="menu-toggle" id="menuToggle" aria-label="Menu">▼</button>
-            <ul id="navMenu">
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="5"/>
+                        <ellipse cx="35" cy="55" rx="18" ry="28" fill="currentColor"/>
+                        <circle cx="45" cy="28" r="6" fill="currentColor"/>
+                        <circle cx="55" cy="25" r="5" fill="currentColor"/>
+                        <circle cx="63" cy="24" r="4.5" fill="currentColor"/>
+                        <circle cx="70" cy="25" r="4" fill="currentColor"/>
+                        <circle cx="76" cy="27" r="3.5" fill="currentColor"/>
+                    </svg>
+                </div>
+                <span>Sierlijke Voeten</span>
+            </div>
+            <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#diensten">Diensten</a></li>
                 <li><a href="#over">Over Arifa</a></li>
@@ -509,33 +430,6 @@
     </footer>
 
     <script>
-        // Menu toggle for mobile
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        
-        if (menuToggle) {
-            menuToggle.addEventListener('click', () => {
-                navMenu.classList.toggle('active');
-                menuToggle.classList.toggle('active');
-            });
-
-            // Close menu when clicking on a link
-            document.querySelectorAll('#navMenu a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navMenu.classList.remove('active');
-                    menuToggle.classList.remove('active');
-                });
-            });
-
-            // Close menu when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
-                    navMenu.classList.remove('active');
-                    menuToggle.classList.remove('active');
-                }
-            });
-        }
-
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
