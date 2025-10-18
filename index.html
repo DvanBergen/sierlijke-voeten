@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sierlijke Voeten - Medische Pedicure in [Plaats]</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bosgroen: #2d4a2b;
+            --licht-groen: #5a7a57;
+            --beige: #d4c5b0;
+            --licht-beige: #f0ebe3;
+            --bruin: #6b4e3d;
+            --wit: #fdfcf9;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--wit);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--bosgroen) 0%, var(--licht-groen) 100%);
+            color: var(--wit);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            font-family: 'Palatino', serif;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--wit);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: transform 0.3s;
+        }
+
+        .menu-toggle.active {
+            transform: rotate(180deg);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--wit);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+
+        nav a:hover {
+            color: var(--beige);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(45, 74, 43, 0.7), rgba(45, 74, 43, 0.7)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%235a7a57" width="1200" height="600"/><path d="M0 400 Q300 350 600 400 T1200 400 L1200 600 L0 600 Z" fill="%232d4a2b"/><circle cx="200" cy="150" r="80" fill="%236b4e3d" opacity="0.3"/><circle cx="800" cy="200" r="100" fill="%236b4e3d" opacity="0.2"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: var(--wit);
+            padding: 200px 2rem 120px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-family: 'Palatino', serif;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--beige);
+            color: var(--bosgroen);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            background-color: var(--licht-beige);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section h2 {
+            color: var(--bosgroen);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-family: 'Palatino', serif;
+        }
+
+        .diensten-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .dienst-card {
+            background-color: var(--licht-beige);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            border: 3px solid var(--beige);
+        }
+
+        .dienst-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .dienst-card h3 {
+            color: var(--bosgroen);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .dienst-card p {
+            color: var(--bruin);
+            line-height: 1.8;
+        }
+
+        .over-mij {
+            background-color: var(--licht-beige);
+            padding: 4rem 2rem;
+            border-radius: 15px;
+        }
+
+        .over-mij-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .over-mij-content h3 {
+            color: var(--bosgroen);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .over-mij-content .intro-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--bosgroen);
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, var(--bosgroen) 0%, var(--licht-groen) 100%);
+            color: var(--wit);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .contact-item {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-item svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--beige);
+        }
+
+        footer {
+            background-color: var(--bosgroen);
+            color: var(--wit);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .voordelen {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .voordeel {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .voordeel h3 {
+            color: var(--bosgroen);
+            margin-bottom: 0.5rem;
+        }
+
+        body.dark-theme {
+            --bosgroen: #a8c5a6;
+            --licht-groen: #7fa17d;
+            --beige: #d4c5b0;
+            --licht-beige: #2a2a2a;
+            --bruin: #d4c5b0;
+            --wit: #1a1a1a;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        body.dark-theme header {
+            background: linear-gradient(135deg, #2a2a2a 0%, #3a3a3a 100%);
+        }
+
+        body.dark-theme .hero {
+            background: linear-gradient(rgba(20, 20, 20, 0.8), rgba(20, 20, 20, 0.8)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%233a3a3a" width="1200" height="600"/><path d="M0 400 Q300 350 600 400 T1200 400 L1200 600 L0 600 Z" fill="%232a2a2a"/><circle cx="200" cy="150" r="80" fill="%23505050" opacity="0.3"/><circle cx="800" cy="200" r="100" fill="%23505050" opacity="0.2"/></svg>');
+        }
+
+        body.dark-theme .section h2 {
+            color: #a8c5a6;
+        }
+
+        body.dark-theme .dienst-card {
+            background-color: #2a2a2a;
+            border-color: #3a3a3a;
+        }
+
+        body.dark-theme .dienst-card h3 {
+            color: #a8c5a6;
+        }
+
+        body.dark-theme .over-mij {
+            background-color: #2a2a2a;
+        }
+
+        body.dark-theme .contact-info {
+            background: linear-gradient(135deg, #2a2a2a 0%, #3a3a3a 100%);
+        }
+
+        body.dark-theme footer {
+            background-color: #2a2a2a;
+        }
+
+        body.dark-theme {
+            --bosgroen: #a8c5a6;
+            --licht-groen: #7fa17d;
+            --beige: #d4c5b0;
+            --licht-beige: #2a2a2a;
+            --bruin: #d4c5b0;
+            --wit: #1a1a1a;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        body.dark-theme header {
+            background: linear-gradient(135deg, #2a2a2a 0%, #3a3a3a 100%);
+        }
+
+        body.dark-theme .hero {
+            background: linear-gradient(rgba(20, 20, 20, 0.8), rgba(20, 20, 20, 0.8)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%233a3a3a" width="1200" height="600"/><path d="M0 400 Q300 350 600 400 T1200 400 L1200 600 L0 600 Z" fill="%232a2a2a"/><circle cx="200" cy="150" r="80" fill="%23505050" opacity="0.3"/><circle cx="800" cy="200" r="100" fill="%23505050" opacity="0.2"/></svg>');
+        }
+
+        body.dark-theme .section h2 {
+            color: #a8c5a6;
+        }
+
+        body.dark-theme .dienst-card {
+            background-color: #2a2a2a;
+            border-color: #3a3a3a;
+        }
+
+        body.dark-theme .dienst-card h3 {
+            color: #a8c5a6;
+        }
+
+        body.dark-theme .over-mij {
+            background-color: #2a2a2a;
+        }
+
+        body.dark-theme .contact-info {
+            background: linear-gradient(135deg, #2a2a2a 0%, #3a3a3a 100%);
+        }
+
+        body.dark-theme footer {
+            background-color: #2a2a2a;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 73px;
+                right: -100%;
+                width: 250px;
+                height: calc(100vh - 73px);
+                background: var(--bosgroen);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                transition: right 0.3s ease;
+                box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+                align-items: flex-start;
+            }
+
+            nav ul.active {
+                right: 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Sierlijke Voeten</div>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu">▼</button>
+            <ul id="navMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#diensten">Diensten</a></li>
+                <li><a href="#over">Over Arifa</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h1>Welkom bij Sierlijke Voeten</h1>
+        <p>Medische voetverzorging met vakkundigheid en persoonlijke aandacht</p>
+        <a href="#contact" class="cta-button">Maak een Afspraak</a>
+    </section>
+
+    <div class="container">
+        <section id="diensten" class="section">
+            <h2>Onze Diensten</h2>
+            <p style="text-align: center; color: var(--bruin); max-width: 800px; margin: 0 auto 2rem;">
+                Gespecialiseerd in medische voetverzorging voor gezonde en comfortabele voeten
+            </p>
+            
+            <div class="diensten-grid">
+                <div class="dienst-card">
+                    <h3>Medische Pedicure</h3>
+                    <p>Professionele voetverzorging waarbij nagelriemen verzorgd worden, nagels worden geknipt en gevijld, en de voeten grondig worden gereinigd. Ideaal voor het behouden van gezonde voeten.</p>
+                </div>
+
+                <div class="dienst-card">
+                    <h3>Likdoorn Behandeling</h3>
+                    <p>Vakkundige verwijdering van pijnlijke likdoorns met professionele instrumenten. Verlichting van drukpunten en advies over preventie voor langdurig comfort.</p>
+                </div>
+
+                <div class="dienst-card">
+                    <h3>Eeltverwijdering</h3>
+                    <p>Zorgvuldige verwijdering van hardnekkig eelt voor zachte en soepele voeten. Behandeling wordt afgestemd op uw specifieke situatie voor optimaal resultaat.</p>
+                </div>
+
+                <div class="dienst-card">
+                    <h3>Voetreflex Massage</h3>
+                    <p>Ontspannende voetreflexologie massage die niet alleen de voeten verzorgt, maar ook bijdraagt aan algeheel welzijn en ontspanning van lichaam en geest.</p>
+                </div>
+
+                <div class="dienst-card">
+                    <h3>Nagelproblematiek</h3>
+                    <p>Behandeling van ingegroeide nagels, dikke nagels en andere nagelklachten met deskundige zorg en advies voor thuisverzorging.</p>
+                </div>
+
+                <div class="dienst-card">
+                    <h3>Advies & Nazorg</h3>
+                    <p>Persoonlijk advies over voetgezondheid, schoeisel en thuisverzorging. Preventieve tips om uw voeten gezond te houden.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Waarom Sierlijke Voeten?</h2>
+            <div class="voordelen">
+                <div class="voordeel">
+                    <h3>Jarenlange Ervaring</h3>
+                    <p>Arifa heeft uitgebreide ervaring in medische voetverzorging</p>
+                </div>
+                <div class="voordeel">
+                    <h3>Persoonlijke Aandacht</h3>
+                    <p>Één-op-één behandeling in een rustige, ontspannen omgeving</p>
+                </div>
+                <div class="voordeel">
+                    <h3>Vakkundig & Hygiënisch</h3>
+                    <p>Professionele werkwijze met oog voor detail en hygiëne</p>
+                </div>
+                <div class="voordeel">
+                    <h3>Betaalbaar</h3>
+                    <p>Eerlijke prijzen voor kwaliteit voetverzorging</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="over" class="section">
+            <h2>Over Arifa</h2>
+            <div class="over-mij">
+                <div class="over-mij-content">
+                    <h3>Ervaren Medisch Pedicure</h3>
+                    <p style="color: var(--bruin); line-height: 1.8; margin-bottom: 1rem;">
+                        <span class="intro-name">Arifa</span> is een ervaren medisch pedicure met jarenlange ervaring in voetverzorging. 
+                        Zij staat voor vakkundigheid, persoonlijke aandacht en een warm welkom. Arifa begrijpt dat gezonde voeten 
+                        essentieel zijn voor uw algehele welzijn en mobiliteit.
+                    </p>
+                    <p style="color: var(--bruin); line-height: 1.8; margin-bottom: 1rem;">
+                        Bij Sierlijke Voeten draait het om meer dan alleen voetverzorging. Het gaat om 
+                        aandacht, luisteren naar uw klachten en het bieden van oplossingen die werken. 
+                        Elke behandeling wordt met zorg uitgevoerd in een ontspannen sfeer.
+                    </p>
+                    <p style="color: var(--bruin); line-height: 1.8;">
+                        Of u nu komt voor een reguliere behandeling, last heeft van likdoorns of eelt, 
+                        of gewoon wilt genieten van een ontspannende voetmassage - u bent van harte welkom!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <h2>Contact & Afspraak</h2>
+            <div class="contact-info">
+                <h3>Maak direct een afspraak</h3>
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    <span>info@sierlijkevoeten.nl</span>
+                </div>
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    <span>06 - 12 34 56 78</span>
+                </div>
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <span>Adresstraat 123, 1234 AB Plaats</span>
+                </div>
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                    <span>Ma t/m Vr: 9:00 - 17:00 | Za: op afspraak</span>
+                </div>
+                <p style="margin-top: 2rem; font-style: italic;">
+                    Alleen op afspraak - bel of mail voor een geschikt tijdstip
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Sierlijke Voeten - Medische Pedicure | KvK: 12345678</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Uw voeten in vertrouwde handen</p>
+    </footer>
+
+    <script>
+        // Menu toggle for mobile
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+
+            // Close menu when clicking on a link
+            document.querySelectorAll('#navMenu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                    navMenu.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                }
+            });
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
