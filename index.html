@@ -133,6 +133,46 @@
             background: var(--glass);
         }
 
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .lang-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            color: var(--text);
+            padding: 0.4rem 0.85rem;
+            border-radius: 100px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            cursor: pointer;
+            transition: all 0.22s ease;
+            text-transform: uppercase;
+        }
+
+        .lang-toggle:hover {
+            background: var(--glass-hover);
+            color: var(--accent);
+            transform: translateY(-1px);
+        }
+
+        .lang-toggle svg {
+            width: 13px;
+            height: 13px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+        }
+
         .nav-burger {
             display: none;
             flex-direction: column;
@@ -168,6 +208,32 @@
             padding: 120px 2rem 80px;
             text-align: center;
             position: relative;
+        }
+
+        .hero-visual {
+            width: clamp(180px, 24vw, 260px);
+            height: clamp(180px, 24vw, 260px);
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+            box-shadow:
+                0 20px 60px rgba(0,0,0,0.4),
+                0 0 80px rgba(168,213,181,0.18),
+                inset 0 0 0 1px rgba(255,255,255,0.12);
+            animation: floaty 6s ease-in-out infinite;
+        }
+
+        .hero-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @keyframes floaty {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         .hero-badge {
@@ -351,15 +417,25 @@
         }
 
         .service-icon {
-            width: 46px;
-            height: 46px;
-            background: rgba(168,213,181,0.13);
-            border-radius: 12px;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, rgba(168,213,181,0.22), rgba(168,213,181,0.08));
+            border: 1px solid rgba(168,213,181,0.22);
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
             margin-bottom: 1.2rem;
+        }
+
+        .service-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--accent);
+            fill: none;
+            stroke-width: 1.6;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
         .service-card h3 {
@@ -376,6 +452,35 @@
         }
 
         /* ─── Why grid ─── */
+        .why-section {
+            position: relative;
+        }
+
+        .why-leaf {
+            position: absolute;
+            top: 2rem;
+            left: -80px;
+            width: 260px;
+            height: 260px;
+            opacity: 0.22;
+            pointer-events: none;
+            transform: rotate(-18deg);
+            filter: drop-shadow(0 10px 30px rgba(168,213,181,0.2));
+            z-index: 0;
+        }
+
+        .why-leaf img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .why-section > * { position: relative; z-index: 1; }
+
+        @media (max-width: 700px) {
+            .why-leaf { width: 160px; height: 160px; left: -50px; opacity: 0.15; }
+        }
+
         .why-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
@@ -400,8 +505,25 @@
         }
 
         .why-icon {
-            font-size: 1.8rem;
-            margin-bottom: 0.9rem;
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 0.9rem;
+            background: linear-gradient(135deg, rgba(168,213,181,0.22), rgba(168,213,181,0.08));
+            border: 1px solid rgba(168,213,181,0.22);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .why-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--accent);
+            fill: none;
+            stroke-width: 1.6;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
         .why-card h3 {
@@ -426,6 +548,35 @@
             border-radius: 24px;
             padding: 2.75rem;
             margin-top: 2.75rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-feather {
+            position: absolute;
+            top: -30px;
+            right: -40px;
+            width: 240px;
+            height: 240px;
+            opacity: 0.35;
+            pointer-events: none;
+            transform: rotate(14deg);
+            filter: drop-shadow(0 10px 30px rgba(168,213,181,0.18));
+        }
+
+        .about-feather img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .about-panel > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 700px) {
+            .about-feather { width: 160px; height: 160px; top: -20px; right: -30px; opacity: 0.22; }
         }
 
         .about-panel p {
@@ -620,121 +771,156 @@
                 <span class="nav-logo-name">Sierlijke Voeten</span>
             </a>
             <ul class="nav-links" id="nav-links" role="list">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#diensten">Diensten</a></li>
-                <li><a href="#over">Over Arifa</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home" data-en="Home">Home</a></li>
+                <li><a href="#diensten" data-en="Services">Diensten</a></li>
+                <li><a href="#over" data-en="About Arifa">Over Arifa</a></li>
+                <li><a href="#contact" data-en="Contact">Contact</a></li>
             </ul>
-            <button class="nav-burger" id="burger" aria-label="Menu openen" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
+            <div class="nav-right">
+                <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    <span id="lang-label">EN</span>
+                </button>
+                <button class="nav-burger" id="burger" aria-label="Menu openen" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
         </nav>
     </header>
 
     <!-- Hero -->
     <section id="home" class="hero">
-        <div class="hero-badge">🌿 Pedicure · Delfzijl</div>
-        <h1>Verzorgde voeten,<br><em>verzorgd gevoel</em></h1>
-        <p class="hero-sub">Vakkundige voetverzorging met persoonlijke aandacht — van pedicure tot voetreflexologie in Delfzijl.</p>
+        <div class="hero-visual">
+            <img src="img/glass_logo.png" alt="Sierlijke Voeten - verzorgde voeten" loading="eager">
+        </div>
+        <div class="hero-badge" data-en="🌿 Pedicure · Delfzijl">🌿 Pedicure · Delfzijl</div>
+        <h1 data-en="Well-cared feet,<br><em>a cared-for feeling</em>">Verzorgde voeten,<br><em>verzorgd gevoel</em></h1>
+        <p class="hero-sub" data-en="Expert foot care with personal attention — from pedicure to foot reflexology in Delfzijl.">Vakkundige voetverzorging met persoonlijke aandacht — van pedicure tot voetreflexologie in Delfzijl.</p>
         <div class="hero-actions">
-            <a href="#contact" class="btn-primary">Afspraak Maken</a>
-            <a href="#diensten" class="btn-ghost">Bekijk Diensten</a>
+            <a href="#contact" class="btn-primary" data-en="Book Appointment">Afspraak Maken</a>
+            <a href="#diensten" class="btn-ghost" data-en="View Services">Bekijk Diensten</a>
         </div>
         <div class="hero-scroll" aria-hidden="true">
-            <span>Scroll</span>
+            <span data-en="Scroll">Scroll</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
         </div>
     </section>
 
     <!-- Diensten -->
     <section id="diensten" class="section reveal">
-        <div class="section-label">Diensten</div>
-        <h2>Wat kan ik voor u betekenen?</h2>
-        <p class="section-intro">Gespecialiseerd in voetverzorging voor gezonde, comfortabele voeten, met aandacht voor elk detail.</p>
+        <div class="section-label" data-en="Services">Diensten</div>
+        <h2 data-en="What can I do for you?">Wat kan ik voor u betekenen?</h2>
+        <p class="section-intro" data-en="Specialised in foot care for healthy, comfortable feet — with attention to every detail.">Gespecialiseerd in voetverzorging voor gezonde, comfortabele voeten, met aandacht voor elk detail.</p>
         <div class="services-grid">
             <div class="service-card">
-                <div class="service-icon">✂️</div>
-                <h3>Pedicure</h3>
-                <p>Professionele voetverzorging waarbij nagelriemen worden verzorgd, nagels worden geknipt en gevijld, en de voeten grondig worden gereinigd. Ideaal voor gezonde, zachte voeten.</p>
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><path d="M8 4c-2.2 0-4 1.8-4 4s1.8 4 4 4c1.2 0 2.3-.5 3-1.4"/><path d="M16 4c2.2 0 4 1.8 4 4s-1.8 4-4 4c-1.2 0-2.3-.5-3-1.4"/><line x1="11" y1="10.6" x2="21" y2="20"/><line x1="13" y1="10.6" x2="3" y2="20"/></svg>
+                </div>
+                <h3 data-en="Pedicure">Pedicure</h3>
+                <p data-en="Professional foot care: cuticles are tended, nails are trimmed and filed, and feet are thoroughly cleansed. Ideal for healthy, soft feet.">Professionele voetverzorging waarbij nagelriemen worden verzorgd, nagels worden geknipt en gevijld, en de voeten grondig worden gereinigd. Ideaal voor gezonde, zachte voeten.</p>
             </div>
             <div class="service-card">
-                <div class="service-icon">🔍</div>
-                <h3>Likdoorn Behandeling</h3>
-                <p>Vakkundige verwijdering van pijnlijke likdoorns met professionele instrumenten, inclusief verlichting van drukpunten en persoonlijk preventieadvies.</p>
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg>
+                </div>
+                <h3 data-en="Corn Treatment">Likdoorn Behandeling</h3>
+                <p data-en="Expert removal of painful corns with professional instruments, including pressure-point relief and personal prevention advice.">Vakkundige verwijdering van pijnlijke likdoorns met professionele instrumenten, inclusief verlichting van drukpunten en persoonlijk preventieadvies.</p>
             </div>
             <div class="service-card">
-                <div class="service-icon">✨</div>
-                <h3>Eeltverwijdering</h3>
-                <p>Zorgvuldige verwijdering van hardnekkig eelt voor zachte en soepele voeten. De behandeling wordt afgestemd op uw specifieke situatie voor optimaal resultaat.</p>
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/></svg>
+                </div>
+                <h3 data-en="Callus Removal">Eeltverwijdering</h3>
+                <p data-en="Careful removal of stubborn calluses for soft and supple feet. The treatment is tailored to your situation for optimal results.">Zorgvuldige verwijdering van hardnekkig eelt voor zachte en soepele voeten. De behandeling wordt afgestemd op uw specifieke situatie voor optimaal resultaat.</p>
             </div>
             <div class="service-card">
-                <div class="service-icon">💆</div>
-                <h3>Voetreflexologiemassage</h3>
-                <p>Ontspannende massage die niet alleen de voeten verzorgt, maar ook bijdraagt aan het algehele welzijn en de ontspanning van lichaam en geest.</p>
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><path d="M4 14c0-4 3-8 8-8s8 4 8 8"/><path d="M7 14v3a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-3"/><path d="M10 10.5c.5 1 1.5 1.5 2 1.5s1.5-.5 2-1.5"/></svg>
+                </div>
+                <h3 data-en="Foot Reflexology Massage">Voetreflexologiemassage</h3>
+                <p data-en="A relaxing massage that not only cares for the feet but also contributes to overall well-being and relaxation of body and mind.">Ontspannende massage die niet alleen de voeten verzorgt, maar ook bijdraagt aan het algehele welzijn en de ontspanning van lichaam en geest.</p>
             </div>
             <div class="service-card">
-                <div class="service-icon">💅</div>
-                <h3>Nagelproblematiek</h3>
-                <p>Behandeling van ingegroeide nagels, dikke nagels, kalknagels en andere nagelklachten met deskundige zorg en thuisadvies voor nazorg.</p>
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><path d="M9 3h6a1 1 0 0 1 1 1v3H8V4a1 1 0 0 1 1-1z"/><path d="M7 7h10l-1 12a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2L7 7z"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+                </div>
+                <h3 data-en="Nail Conditions">Nagelproblematiek</h3>
+                <p data-en="Treatment of ingrown nails, thickened nails, fungal nails and other nail conditions with expert care and aftercare advice.">Behandeling van ingegroeide nagels, dikke nagels, kalknagels en andere nagelklachten met deskundige zorg en thuisadvies voor nazorg.</p>
             </div>
             <div class="service-card">
-                <div class="service-icon">💡</div>
-                <h3>Advies & Nazorg</h3>
-                <p>Persoonlijk advies over voetgezondheid, schoeisel en thuisverzorging. Preventieve tips om uw voeten gezond te houden tussen behandelingen door.</p>
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.8.8 1.2 1.5 1.5 2.5h5c.3-1 .7-1.7 1.5-2.5A6 6 0 0 0 12 3z"/></svg>
+                </div>
+                <h3 data-en="Advice & Aftercare">Advies & Nazorg</h3>
+                <p data-en="Personal advice on foot health, footwear and home care. Preventive tips to keep your feet healthy between treatments.">Persoonlijk advies over voetgezondheid, schoeisel en thuisverzorging. Preventieve tips om uw voeten gezond te houden tussen behandelingen door.</p>
             </div>
         </div>
     </section>
 
     <!-- Waarom -->
-    <section class="section reveal">
-        <div class="section-label">Waarom Sierlijke Voeten</div>
-        <h2>Wat u mag verwachten</h2>
+    <section class="section reveal why-section">
+        <div class="why-leaf" aria-hidden="true">
+            <img src="img/glass_leave.png" alt="">
+        </div>
+        <div class="section-label" data-en="Why Sierlijke Voeten">Waarom Sierlijke Voeten</div>
+        <h2 data-en="What you can expect">Wat u mag verwachten</h2>
         <div class="why-grid">
             <div class="why-card">
-                <div class="why-icon">⭐</div>
-                <h3>Jarenlange Ervaring</h3>
-                <p>Uitgebreide ervaring binnen de professionele voetverzorging.</p>
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 21.5 12 18 5.5 21.5 7 14.5 2 9.5 9 9 12 2"/></svg>
+                </div>
+                <h3 data-en="Years of Experience">Jarenlange Ervaring</h3>
+                <p data-en="Extensive experience in professional foot care.">Uitgebreide ervaring binnen de professionele voetverzorging.</p>
             </div>
             <div class="why-card">
-                <div class="why-icon">🤝</div>
-                <h3>Persoonlijke Aandacht</h3>
-                <p>Eén-op-één behandeling in een rustige, ontspannen omgeving.</p>
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-7-10a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg>
+                </div>
+                <h3 data-en="Personal Attention">Persoonlijke Aandacht</h3>
+                <p data-en="One-on-one treatment in a calm, relaxed environment.">Eén-op-één behandeling in een rustige, ontspannen omgeving.</p>
             </div>
             <div class="why-card">
-                <div class="why-icon">🧼</div>
-                <h3>Vakkundig & Hygiënisch</h3>
-                <p>Professionele werkwijze met oog voor detail en hygiëne.</p>
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V6l8-3z"/><polyline points="9 12 11 14 15 10"/></svg>
+                </div>
+                <h3 data-en="Expert & Hygienic">Vakkundig & Hygiënisch</h3>
+                <p data-en="Professional approach with attention to detail and hygiene.">Professionele werkwijze met oog voor detail en hygiëne.</p>
             </div>
             <div class="why-card">
-                <div class="why-icon">☕</div>
-                <h3>Gezellige Sfeer</h3>
-                <p>Een praatje of gewoon even rusten, het mag allebei.</p>
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24"><path d="M4 10h13v5a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-5z"/><path d="M17 11h2a2 2 0 0 1 0 4h-2"/><path d="M8 4c0 1 1 1.5 1 2.5S8 8 8 9"/><path d="M12 4c0 1 1 1.5 1 2.5S12 8 12 9"/></svg>
+                </div>
+                <h3 data-en="Warm Atmosphere">Gezellige Sfeer</h3>
+                <p data-en="A little chat or just a quiet moment — both are welcome.">Een praatje of gewoon even rusten, het mag allebei.</p>
             </div>
         </div>
     </section>
 
     <!-- Over Arifa -->
     <section id="over" class="section reveal">
-        <div class="section-label">Over</div>
-        <h2>Maak kennis met Arifa</h2>
-        <p class="section-intro">Ervaren pedicure met een warm welkom en oprecht oog voor uw welzijn.</p>
+        <div class="section-label" data-en="About">Over</div>
+        <h2 data-en="Meet Arifa">Maak kennis met Arifa</h2>
+        <p class="section-intro" data-en="An experienced pedicure specialist with a warm welcome and sincere care for your well-being.">Ervaren pedicure met een warm welkom en oprecht oog voor uw welzijn.</p>
         <div class="about-panel">
-            <p><strong>Arifa</strong> is pedicure met jarenlange ervaring in voetverzorging. Zij staat voor vakkundigheid, persoonlijke aandacht en een warm welkom. Arifa begrijpt dat gezonde voeten essentieel zijn voor uw algehele welzijn en mobiliteit.</p>
-            <p>Bij Sierlijke Voeten draait het om meer dan alleen voetverzorging. Het gaat om aandacht, het luisteren naar uw klachten of vragen en het bieden van oplossingen die écht werken. Elke behandeling wordt met zorg uitgevoerd in een ontspannen sfeer.</p>
-            <p>Of u nu komt voor een reguliere behandeling, last heeft van likdoorns of eelt, of gewoon wilt genieten van een ontspannende voetmassage — u bent van harte welkom!</p>
-            <p class="about-highlight">📍 Nu gevestigd op Jachtlaan 12, in de G&W (Gezondheidswinkel). Alles bevindt zich op de begane grond,  volledig toegankelijk voor iedereen.</p>
+            <div class="about-feather" aria-hidden="true">
+                <img src="img/glass_feather.png" alt="">
+            </div>
+            <p data-en="<strong>Arifa</strong> is a pedicure specialist with many years of experience in foot care. She stands for expertise, personal attention and a warm welcome. Arifa understands that healthy feet are essential for your overall well-being and mobility."><strong>Arifa</strong> is pedicure met jarenlange ervaring in voetverzorging. Zij staat voor vakkundigheid, persoonlijke aandacht en een warm welkom. Arifa begrijpt dat gezonde voeten essentieel zijn voor uw algehele welzijn en mobiliteit.</p>
+            <p data-en="At Sierlijke Voeten it's about more than just foot care. It's about attention, listening to your concerns or questions, and offering solutions that truly work. Every treatment is carried out with care in a relaxed atmosphere.">Bij Sierlijke Voeten draait het om meer dan alleen voetverzorging. Het gaat om aandacht, het luisteren naar uw klachten of vragen en het bieden van oplossingen die écht werken. Elke behandeling wordt met zorg uitgevoerd in een ontspannen sfeer.</p>
+            <p data-en="Whether you come in for a regular treatment, suffer from corns or calluses, or simply want to enjoy a relaxing foot massage — you are most welcome!">Of u nu komt voor een reguliere behandeling, last heeft van likdoorns of eelt, of gewoon wilt genieten van een ontspannende voetmassage — u bent van harte welkom!</p>
+            <p class="about-highlight" data-en="📍 Now located at Jachtlaan 12, inside the G&W (health store). Everything is on the ground floor, fully accessible for everyone.">📍 Nu gevestigd op Jachtlaan 12, in de G&W (Gezondheidswinkel). Alles bevindt zich op de begane grond,  volledig toegankelijk voor iedereen.</p>
         </div>
     </section>
 
     <!-- Contact -->
     <section id="contact" class="section reveal">
-        <div class="section-label">Contact</div>
-        <h2>Maak een afspraak</h2>
-        <p class="section-intro">Wij werken uitsluitend op afspraak. Bel voor het inplannen van uw afspraak. Vragen? Stuur ons een mail.</p>
+        <div class="section-label" data-en="Contact">Contact</div>
+        <h2 data-en="Book an appointment">Maak een afspraak</h2>
+        <p class="section-intro" data-en="We work exclusively by appointment. Please call to schedule. Questions? Send us an email.">Wij werken uitsluitend op afspraak. Bel voor het inplannen van uw afspraak. Vragen? Stuur ons een mail.</p>
         <div class="contact-grid">
             <div class="contact-panel">
-                <h3>Bereikbaarheid</h3>
-                <p class="sub">Neem gerust contact op</p>
+                <h3 data-en="Get in touch">Bereikbaarheid</h3>
+                <p class="sub" data-en="Feel free to contact us">Neem gerust contact op</p>
 
                 <div class="contact-item">
                     <div class="ci-icon">
@@ -754,21 +940,21 @@
                     <div class="ci-icon">
                         <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
                     </div>
-                    <a href="https://maps.app.goo.gl/bsY8HboKWPzcHf1X7" target="_blank" rel="noopener noreferrer">Jachtlaan 12, 9934 JA, Delfzijl</a>
+                    <a href="https://maps.app.goo.gl/bsY8HboKWPzcHf1X7" target="_blank" rel="noopener noreferrer" data-en="Jachtlaan 12, 9934 JA, Delfzijl, Netherlands">Jachtlaan 12, 9934 JA, Delfzijl</a>
                 </div>
 
                 <div class="contact-item">
                     <div class="ci-icon">
                         <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
                     </div>
-                    <span>Ma – Vr: 9:00 – 17:00 &nbsp;|&nbsp; Za: op afspraak</span>
+                    <span data-en="Mon – Fri: 9:00 – 17:00 &nbsp;|&nbsp; Sat: by appointment">Ma – Vr: 9:00 – 17:00 &nbsp;|&nbsp; Za: op afspraak</span>
                 </div>
 
                 <div class="contact-item">
                     <div class="ci-icon">
                         <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                     </div>
-                    <a href="https://www.facebook.com/p/Pedicure-Sierlijke-Voeten-100057386533044/" target="_blank" rel="noopener noreferrer">Volg ons op Facebook</a>
+                    <a href="https://www.facebook.com/p/Pedicure-Sierlijke-Voeten-100057386533044/" target="_blank" rel="noopener noreferrer" data-en="Follow us on Facebook">Volg ons op Facebook</a>
                 </div>
             </div>
 
@@ -785,8 +971,8 @@
     </section>
 
     <footer>
-        <p>&copy; 2026 Sierlijke Voeten – Pedicure &nbsp;|&nbsp; KvK: 65341147</p>
-        <p>Uw voeten in vertrouwde handen</p>
+        <p data-en="&copy; 2026 Sierlijke Voeten – Pedicure &nbsp;|&nbsp; CoC: 65341147">&copy; 2026 Sierlijke Voeten – Pedicure &nbsp;|&nbsp; KvK: 65341147</p>
+        <p data-en="Your feet in trusted hands">Uw voeten in vertrouwde handen</p>
     </footer>
 
     <script>
@@ -822,6 +1008,36 @@
             });
         }, { threshold: 0.08 });
         document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+        // Language toggle (NL <-> EN)
+        const langToggle = document.getElementById('lang-toggle');
+        const langLabel = document.getElementById('lang-label');
+        const translatables = document.querySelectorAll('[data-en]');
+        // Snapshot original Dutch content once so we can restore it.
+        translatables.forEach(el => { el.dataset.nl = el.innerHTML; });
+
+        function setLang(lang) {
+            const isEn = lang === 'en';
+            document.documentElement.lang = isEn ? 'en' : 'nl';
+            translatables.forEach(el => {
+                el.innerHTML = isEn ? el.dataset.en : el.dataset.nl;
+            });
+            langLabel.textContent = isEn ? 'NL' : 'EN';
+            langToggle.setAttribute('aria-label', isEn ? 'Schakel naar Nederlands' : 'Switch to English');
+            document.getElementById('burger').setAttribute('aria-label', isEn ? 'Open menu' : 'Menu openen');
+            try { localStorage.setItem('sv-lang', lang); } catch(e) {}
+        }
+
+        langToggle.addEventListener('click', () => {
+            const next = document.documentElement.lang === 'en' ? 'nl' : 'en';
+            setLang(next);
+        });
+
+        // Restore preference (default NL)
+        try {
+            const saved = localStorage.getItem('sv-lang');
+            if (saved === 'en') setLang('en');
+        } catch(e) {}
     </script>
 </body>
 </html>
