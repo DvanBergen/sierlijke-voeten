@@ -211,17 +211,22 @@
         }
 
         .hero-visual {
-            width: clamp(180px, 24vw, 260px);
-            height: clamp(180px, 24vw, 260px);
+            width: clamp(200px, 26vw, 290px);
+            height: clamp(200px, 26vw, 290px);
             margin: 0 auto 2rem;
-            border-radius: 50%;
-            overflow: hidden;
             position: relative;
-            box-shadow:
-                0 20px 60px rgba(0,0,0,0.4),
-                0 0 80px rgba(168,213,181,0.18),
-                inset 0 0 0 1px rgba(255,255,255,0.12);
             animation: floaty 6s ease-in-out infinite;
+            -webkit-mask-image: radial-gradient(circle at center, #000 52%, rgba(0,0,0,0.7) 68%, transparent 82%);
+                    mask-image: radial-gradient(circle at center, #000 52%, rgba(0,0,0,0.7) 68%, transparent 82%);
+        }
+
+        .hero-visual::after {
+            content: '';
+            position: absolute;
+            inset: 12%;
+            border-radius: 50%;
+            box-shadow: 0 0 80px rgba(168,213,181,0.28);
+            pointer-events: none;
         }
 
         .hero-visual img {
@@ -229,6 +234,8 @@
             height: 100%;
             object-fit: cover;
             display: block;
+            mix-blend-mode: screen;
+            filter: saturate(1.15) brightness(1.05);
         }
 
         @keyframes floaty {
@@ -460,19 +467,22 @@
             position: absolute;
             top: 2rem;
             left: -80px;
-            width: 260px;
-            height: 260px;
-            opacity: 0.22;
+            width: 320px;
+            height: 320px;
+            opacity: 0.65;
             pointer-events: none;
             transform: rotate(-18deg);
-            filter: drop-shadow(0 10px 30px rgba(168,213,181,0.2));
             z-index: 0;
+            mix-blend-mode: screen;
+            -webkit-mask-image: radial-gradient(ellipse 60% 60% at 55% 50%, #000 30%, rgba(0,0,0,0.6) 60%, transparent 85%);
+                    mask-image: radial-gradient(ellipse 60% 60% at 55% 50%, #000 30%, rgba(0,0,0,0.6) 60%, transparent 85%);
         }
 
         .why-leaf img {
             width: 100%;
             height: 100%;
             object-fit: contain;
+            filter: blur(0.3px) saturate(1.1);
         }
 
         .why-section > * { position: relative; z-index: 1; }
@@ -554,20 +564,23 @@
 
         .about-feather {
             position: absolute;
-            top: -30px;
-            right: -40px;
-            width: 240px;
-            height: 240px;
-            opacity: 0.35;
+            top: -40px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            opacity: 0.7;
             pointer-events: none;
             transform: rotate(14deg);
-            filter: drop-shadow(0 10px 30px rgba(168,213,181,0.18));
+            mix-blend-mode: screen;
+            -webkit-mask-image: radial-gradient(ellipse 55% 55% at 50% 50%, #000 25%, rgba(0,0,0,0.6) 55%, transparent 82%);
+                    mask-image: radial-gradient(ellipse 55% 55% at 50% 50%, #000 25%, rgba(0,0,0,0.6) 55%, transparent 82%);
         }
 
         .about-feather img {
             width: 100%;
             height: 100%;
             object-fit: contain;
+            filter: blur(0.3px) saturate(1.1);
         }
 
         .about-panel > * {
@@ -874,7 +887,7 @@
             </div>
             <div class="why-card">
                 <div class="why-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-7-10a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 20.5l-1.3-1.18C6.1 15.22 3 12.44 3 9.02 3 6.23 5.23 4 8.02 4c1.55 0 3.04.72 4 1.86C12.96 4.72 14.45 4 16 4A5 5 0 0 1 21 9.02c0 3.42-3.1 6.2-7.7 10.3L12 20.5z"/></svg>
                 </div>
                 <h3 data-en="Personal Attention">Persoonlijke Aandacht</h3>
                 <p data-en="One-on-one treatment in a calm, relaxed environment.">Eén-op-één behandeling in een rustige, ontspannen omgeving.</p>
